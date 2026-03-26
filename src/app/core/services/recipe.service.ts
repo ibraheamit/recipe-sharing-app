@@ -20,52 +20,59 @@ export interface Recipe {
   providedIn: 'root'
 })
 export class RecipeService {
-  private apiUrl = `${environment.apiUrl}/recipes`;
+  private apiUrl = `${environment.apiUrl}/recipes.json`;
 
   constructor(private http: HttpClient) {}
 
   getRecipes(category?: string, search?: string): Observable<Recipe[]> {
-    let params = new HttpParams();
-    if (category && category !== 'All') params = params.set('category', category);
-
-    return this.http.get<Recipe[]>(this.apiUrl, { params }).pipe(
-      map((recipes: Recipe[]) => {
+    return this.http.get<Record<string, Recipe>>(this.apiUrl).pipe(
+      map(data => {
+        if (!data) return [];
+        let recipes = Object.values(data);
+        
+        if (category && category !== 'All') {
+          recipes = recipes.filter(r => r.category === category);
+        }
+        
         if (!search || search.trim() === '') return recipes;
         const lowerSearch = search.toLowerCase().trim();
-        return recipes.filter((r: Recipe) => 
+        return recipes.filter(r => 
           r.title.toLowerCase().includes(lowerSearch) ||
           r.description.toLowerCase().includes(lowerSearch) ||
-          r.ingredients.some((i: string) => i.toLowerCase().includes(lowerSearch))
+          (r.ingredients && r.ingredients.some(i => i.toLowerCase().includes(lowerSearch)))
         );
       })
     );
   }
 
   getRecipe(id: string): Observable<Recipe> {
-    return this.http.get<Recipe>(`${this.apiUrl}/${id}`);
+    return this.http.get<Recipe>(`${environment.apiUrl}/recipes/${id}.json`);
   }
 
   getRecipesByUserId(userId: string): Observable<Recipe[]> {
-    let params = new HttpParams().set('userId', userId);
-    return this.http.get<Recipe[]>(this.apiUrl, { params });
+    return this.http.get<Record<string, Recipe>>(this.apiUrl).pipe(
+      map(data => {
+        if (!data) return [];
+        return Object.values(data).filter(r => r.userId === userId);
+      })
+    );
   }
 
   createRecipe(recipe: Partial<Recipe>): Observable<Recipe> {
-    // Generate a simple ID if not provided by backend (json-server usually does this though, but just in case)
     const newRecipe = {
       ...recipe,
-      id: recipe.id || Math.random().toString(36).substring(2, 11), // Use existing ID or generate one
-      rating: recipe.rating || 0, // Use existing rating or default to 0
-      createdAt: recipe.createdAt || new Date().toISOString() // Use existing createdAt or set current time
-    };
-    return this.http.post<Recipe>(this.apiUrl, newRecipe);
+      id: recipe.id || Math.random().toString(36).substring(2, 11),
+      rating: recipe.rating || 0,
+      createdAt: recipe.createdAt || new Date().toISOString()
+    } as Recipe;
+    return this.http.put<Recipe>(`${environment.apiUrl}/recipes/${newRecipe.id}.json`, newRecipe);
   }
 
   updateRecipe(recipe: Recipe): Observable<Recipe> {
-    return this.http.put<Recipe>(`${this.apiUrl}/${recipe.id}`, recipe);
+    return this.http.put<Recipe>(`${environment.apiUrl}/recipes/${recipe.id}.json`, recipe);
   }
 
   deleteRecipe(id: string): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+    return this.http.delete(`${environment.apiUrl}/recipes/${id}.json`);
   }
 }

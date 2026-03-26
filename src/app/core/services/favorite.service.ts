@@ -14,20 +14,25 @@ export interface Favorite {
   providedIn: 'root'
 })
 export class FavoriteService {
-  private apiUrl = `${environment.apiUrl}/favorites`;
+  private apiUrl = `${environment.apiUrl}/favorites.json`;
 
   constructor(private http: HttpClient) {}
 
   getUserFavorites(userId: string): Observable<Favorite[]> {
-    return this.http.get<Favorite[]>(`${this.apiUrl}?userId=${userId}`);
+    return this.http.get<Record<string, Favorite>>(this.apiUrl).pipe(
+      map(data => {
+        if (!data) return [];
+        return Object.values(data).filter(f => f.userId === userId);
+      })
+    );
   }
 
   addFavorite(userId: string, recipeId: string): Observable<Favorite> {
     const newFavorite = { id: String(Date.now()), userId, recipeId };
-    return this.http.post<Favorite>(this.apiUrl, newFavorite);
+    return this.http.put<Favorite>(`${environment.apiUrl}/favorites/${newFavorite.id}.json`, newFavorite);
   }
 
   removeFavorite(favoriteId: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${favoriteId}`);
+    return this.http.delete<void>(`${environment.apiUrl}/favorites/${favoriteId}.json`);
   }
 }

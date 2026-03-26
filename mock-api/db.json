@@ -1,0 +1,140 @@
+{
+  "recipes": [
+    {
+      "id": "1",
+      "title": "Avocado Toast with Egg",
+      "description": "A delicious and healthy start to your day.",
+      "ingredients": [
+        "2 slices bread",
+        "1 avocado",
+        "2 eggs",
+        "salt",
+        "pepper",
+        "red pepper flakes"
+      ],
+      "steps": [
+        "Toast the bread.",
+        "Mash the avocado and spread it on the toast.",
+        "Fry the eggs and place them on top.",
+        "Sprinkle with salt, pepper, and red pepper flakes."
+      ],
+      "category": "Breakfast",
+      "imageUrl": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=800&q=80",
+      "rating": 3.35
+    },
+    {
+      "id": "2",
+      "title": "Vegan Buddha Bowl",
+      "description": "Nourishing bowl full of greens and grains.",
+      "ingredients": [
+        "Quinoa",
+        "Sweet Potato",
+        "Kale",
+        "Chickpeas",
+        "Tahini Dressing"
+      ],
+      "steps": [
+        "Roast the sweet potato and chickpeas.",
+        "Cook the quinoa.",
+        "Massage the kale with olive oil.",
+        "Assemble the bowl and drizzle with tahini dressing."
+      ],
+      "category": "Vegan",
+      "imageUrl": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&q=80",
+      "rating": 4.9
+    },
+    {
+      "title": "Lemon Garlic Pasta",
+      "description": "Tender, golden-brown chicken breasts smothered in a rich, velvety garlic and mushroom cream sauce. A one-pan wonder that pairs perfectly with pasta, rice, or mashed potatoes.",
+      "category": "Lunch",
+      "imageUrl": "https://media.istockphoto.com/id/1317535161/photo/table-full-of-food-for-family-top-view.jpg?s=612x612&w=0&k=20&c=lA-14Isxb0EtTDCyi8xyGomviteA8lL8CFhxWdUQzvI=",
+      "ingredients": [
+        "Chicken: 2 large chicken breasts (halved lengthways).",
+        "Mushrooms: 250g sliced brown or button mushrooms.",
+        "Garlic: 3 cloves, minced.",
+        "Cream: 1 cup heavy cream (or cooking cream).",
+        "Parmesan: 1/4 cup freshly grated.",
+        "Herbs: 1 tsp dried thyme and a handful of fresh parsley."
+      ],
+      "steps": [
+        "Sear the Chicken: Season chicken with salt and pepper. Heat olive oil in a large skillet over medium-high heat. Cook chicken for 5–7 minutes per side until golden and cooked through. Remove and set aside.",
+        "Sauté Mushrooms: In the same pan, melt the butter. Add mushrooms and sauté until they release their moisture and turn golden brown.",
+        "Aromatics: Stir in the minced garlic and dried thyme. Cook for about 1 minute until fragrant.",
+        "Simmer the Sauce: Pour in the heavy cream and bring to a gentle simmer. Reduce heat to low and stir in the Parmesan cheese until the sauce thickens slightly.",
+        "Combine: Place the chicken back into the skillet, spooning the sauce over it. Let it simmer for another 2 minutes to heat through.",
+        "Serve: Garnish with fresh parsley and serve immediately."
+      ],
+      "id": "ZSp8CCqRHLc",
+      "rating": 4.625
+    },
+    {
+      "title": "pasta",
+      "description": "testtesttesttesttesttesttesttest",
+      "category": "Dinner",
+      "imageUrl": "https://media.istockphoto.com/id/1975701807/photo/bucatini-pasta-with-tomato-sauce-and-basil-leaves.jpg?s=1024x1024&w=is&k=20&c=Ya8m3IoV5K6H_HOb2Ao-VpHlqv8rOLYO2SF4x0RHBYI=",
+      "ingredients": [
+        "test",
+        "test2"
+      ],
+      "steps": [
+        "test"
+      ],
+      "userId": "OLKQaw2WVdc",
+      "createdAt": "2026-03-26T06:34:57.758Z",
+      "id": "42oYLZ91nJM",
+      "rating": 0
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "Jane Cook",
+      "email": "jane@example.com",
+      "password": "123",
+      "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80",
+      "bio": "Food lover and recipe creator."
+    },
+    {
+      "name": "ibrahim",
+      "email": "test@gmail.com",
+      "password": "123",
+      "avatar": "https://gravatar.com/avatar/5abb676e07a3177c7c371f65db4ab2de?s=400&d=robohash&r=x",
+      "bio": "test",
+      "id": "OLKQaw2WVdc"
+    },
+    {
+      "name": "Ahmed",
+      "email": "uesr@gmail.com",
+      "password": "123",
+      "avatar": "https://avataaars.io/?avatarStyle=Transparent&topType=Hat&accessoriesType=Blank&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light",
+      "bio": "test",
+      "id": "kua46HSUZ8Q"
+    },
+    {
+      "name": "admin",
+      "email": "admin@test.com",
+      "password": "123456",
+      "avatar": "https://avataaars.io/?avatarStyle=Circle&topType=Turban&accessoriesType=Blank&hatColor=Blue03&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light",
+      "bio": "test",
+      "id": "50cScrKR_lM"
+    }
+  ],
+  "favorites": [
+    {
+      "id": "1",
+      "userId": "1",
+      "recipeId": "1"
+    },
+    {
+      "id": "OAD5E_u6cwM",
+      "userId": "OLKQaw2WVdc",
+      "recipeId": "1"
+    },
+    {
+      "id": "2cHLEf2yPeo",
+      "userId": "kua46HSUZ8Q",
+      "recipeId": "ZSp8CCqRHLc"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
